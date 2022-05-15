@@ -10,13 +10,15 @@ public:
             {'M', 1000}
         };
     
-    bool isRomanShortcut(string s) {
+    bool isRomanShortcut(string s, int i) {
+        s = string(1, s.at(i - 1)) + s.at(i);
         return s == "IV" || s == "IX" ||
                s == "XL" || s == "XC" ||
                s == "CD" || s == "CM";
     }
     
-    int romanShortcutValue(string s) {
+    int romanShortcutValue(string s, int i) {
+        s = string(1, s.at(i - 1)) + s.at(i);
         if (s == "IV") {
             return 4;
         } else if (s == "IX") {
@@ -37,14 +39,9 @@ public:
         int result = 0;
         int i = s.size() - 1;
         while (i >= 0) {
-            if (i - 1 >= 0) {
-                string shortcut = string(1, s.at(i - 1)) + s.at(i);
-                if (isRomanShortcut(shortcut)) {
-                    result += romanShortcutValue(shortcut);
-                    i--;
-                } else {
-                    result += romanValues_[s.at(i)];
-                }
+            if (i - 1 >= 0 && isRomanShortcut(s, i)) {
+                result += romanShortcutValue(s, i);
+                i--;
             } else {
                 result += romanValues_[s.at(i)];
             }
