@@ -1,10 +1,10 @@
 class Foo {
-public:
+private:
     bool done_1_{false};
     bool done_2_{false};
     mutex m_;
-    condition_variable cv_;
-    
+    condition_variable cv_;    
+public:    
     Foo() {}
 
     void first(function<void()> printFirst) {
