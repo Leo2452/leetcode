@@ -11,7 +11,6 @@ public:
         };
     
     bool isRomanShortcut(string s) {
-        cout << "[is] s: " << s << endl;
         return s == "IV" || s == "IX" ||
                s == "XL" || s == "XC" ||
                s == "CD" || s == "CM";
