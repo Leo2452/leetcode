@@ -5,7 +5,7 @@ public:
         return c == '(' || c == '[' || c == '{';
     }
     
-    bool isValid(char c1, char c2) {
+    bool canClose(char c1, char c2) {
         return (c1 == '(' && c2 == ')') ||
                (c1 == '[' && c2 == ']') ||
                (c1 == '{' && c2 == '}');
@@ -17,7 +17,7 @@ public:
             if (isOpen(str.at(i))) {
                 s.push(str.at(i));
             } else {
-                if (s.empty() || !isValid(s.top(), str.at(i))) {
+                if (s.empty() || !canClose(s.top(), str.at(i))) {
                     return false;
                 }
                 s.pop();
