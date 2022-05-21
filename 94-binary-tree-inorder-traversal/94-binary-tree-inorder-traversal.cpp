@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> inorderTraversalOG(TreeNode* root) { // original solution
         if (!root) { return {}; }
         
         vector<int> left = inorderTraversal(root->left);
@@ -21,5 +21,20 @@ public:
             left.push_back(*it);
         }
         return left;
+    }
+    
+    void recHelper(TreeNode* root, vector<int>& result) {
+        if (!root) {
+            return;
+        }
+        recHelper(root->left, result);
+        result.push_back(root->val);
+        recHelper(root->right, result);
+    }
+
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> result;
+        recHelper(root, result);
+        return result;
     }
 };
