@@ -32,6 +32,8 @@ public:
         recHelper(root->right, result);
     }
 
+    // cleaner recursive soln that makes use of recursive
+    // step to append to our array.
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> result;
         recHelper(root, result);
